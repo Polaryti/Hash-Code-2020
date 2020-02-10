@@ -10,6 +10,7 @@ using namespace std;
 int calcularPuntos(unordered_map<int, int> aux);
 void guardarEnArchivo(unordered_map<int, int> aux);
 
+
 const string inputFileName = "file.in";
 const string outputFileName = "solution.out";
 
