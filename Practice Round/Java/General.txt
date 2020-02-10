@@ -1,0 +1,9 @@
+         |ArrayList | LinkedList |
+Add    ->|   O(N)   |    O(1)
+Remove ->|   O(N)   |    O(N)
+Get    ->|   O(1)   |    O(N)
+
+                 |HashMap   | HashTable  |
+Synchronized ->  |    NO    |    YES     | (mejor asegurar con ConcurrentHashMap https://docs.oracle.com/javase/7/docs/api/java/util/concurrent/ConcurrentHashMap.html)
+Null keys    ->  |    YES   |    NO      |
+Order stable ->  |    NO    |    YES     |
