@@ -1,3 +1,5 @@
+package Util;
+
 /**
 * Clase que representa la estructura de datos de pares.
 * Los parametros 'a' y 'b' pueden ser de diferente tipo.
@@ -117,4 +119,5 @@ public class Pair<A, B> {
     hash *= 31 + b.hashCode();
     return hash;
   }
+
 }
