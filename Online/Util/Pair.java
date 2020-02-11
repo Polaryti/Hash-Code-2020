@@ -1,5 +1,3 @@
-package Util;
-
 /**
 * Clase que representa la estructura de datos de pares.
 * Los parametros 'a' y 'b' pueden ser de diferente tipo.
@@ -9,7 +7,7 @@ package Util;
 * @version 1.0
 * @since   11-02-20 
 */
-public class Pair<A, B> {
+public class Pair<A, B> implements Cloneable {
   private A a;    // Primer elemento del Pair
   private B b;    // Segundo elemento del Pair
   private boolean isMutable;    // Indica si se pueden modificar los parametros en ejecución
@@ -33,7 +31,7 @@ public class Pair<A, B> {
    * Crea un nuevo Pair con el primer elemento 'a', segundo 'b' e indicando si es mutable.
    * @param a, primer elemento del Pair.
    * @param b, segundo elemento del Pair.
-   * @param isMutable, indica si el par será o no mutable.
+   * @param isMutable, indica si el Pair será o no mutable.
    * @exception NullPointerException, si algún parametro de entrada es null.
    */
   public Pair(A a, B b, boolean isMutable) {
@@ -62,7 +60,7 @@ public class Pair<A, B> {
   }
 
   /**
-   * Si el Pair es mutable, cambia el valor del primer parametro.
+   * Si el Pair es mutable, cambia el valor del primer elemento.
    * @param a, el nuevo valor del primer elemento.
    * @exception UnsupportedOperationException, si el objeto es inmutable.
    */
@@ -75,7 +73,7 @@ public class Pair<A, B> {
   }
 
   /**
-   * Si el Pair es mutable, cambia el valor del segundo parametro.
+   * Si el Pair es mutable, cambia el valor del segundo elemento.
    * @param b, el nuevo valor del segundo elemento.
    * @exception UnsupportedOperationException, si el objeto es inmutable.
    */
@@ -88,7 +86,7 @@ public class Pair<A, B> {
   }
 
   /**
-   * Si el Pair es mutable, cambia el valor de ambos parametros.
+   * Si el Pair es mutable, cambia el valor de ambos elementos.
    * @param a, el nuevo valor del primer elemento.
    * @param b, el nuevo valor del segundo elemento.
    * @exception UnsupportedOperationException, si el objeto es inmutable.
@@ -113,11 +111,12 @@ public class Pair<A, B> {
   }
 
   @Override
-  public int hashCode() {
-    int hash = 1;
-    hash *= 17 + a.hashCode();
-    hash *= 31 + b.hashCode();
-    return hash;
+  public Pair<A, B> clone() {
+    return new Pair<A, B>(a, b, isMutable);
   }
 
+  @Override
+  public String toString() {
+    return "<" + a + ", " + b + ">";
+  }
 }
