@@ -8,15 +8,22 @@ import java.uti.LinkedList;
  * @since 14-02-20
  */
 public class Main {
-    private final String pathA = "";
-    private final String pathB = "";
-    private final String pathC = "";
-    private final String pathD = "";
-    private final String pathE = "";
+    private final String inputA = "";
+    private final String inputB = "";
+    private final String inputC = "";
+    private final String inputD = "";
+    private final String inputE = "";
+    private final String outputA = "";
+    private final String outputB = "";
+    private final String outputC = "";
+    private final String outputD = "";
+    private final String outputE = "";
 
     public static void main(String[] args) {
-        LinkedList<LinkedList<String>> rawInput = InputParser.getInput(pathA);
+        LinkedList<LinkedList<String>> rawInput = InputParser.getInput(inputA);
         LinkedList<HashCodeObject> objectInput = ObjectGenerator.getHashCodeObjects(rawInput); // Si la primera linea es epecial, habrá que quitarla
-        //Algorithms.algorithmA(0, 1, objectInput);
+        Object res = Algorithms.algorithmA(0, 1, objectInput);
+        System.out.println(PointsCalculator.calculatePoints(res));
+        OutputParser.getOutput(outputA, res);
     }
 }
