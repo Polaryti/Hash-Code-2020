@@ -49,7 +49,7 @@ public class Pair<A, B> implements Cloneable {
   /**
    * Devuelve el primer elemento.
    * 
-   * @return a, el primer elemento.
+   * @return A, el primer elemento.
    */
   public A getA() {
     return a;
@@ -58,7 +58,7 @@ public class Pair<A, B> implements Cloneable {
   /**
    * Devuelve el segundo elemento.
    * 
-   * @return b, el segundo elemento.
+   * @return B, el segundo elemento.
    */
   public B getB() {
     return b;
@@ -110,7 +110,7 @@ public class Pair<A, B> implements Cloneable {
 
   @Override
   public boolean equals(final Object o) {
-    if (o instanceof Pair) {
+    if (o instanceof Pair<A, B>) {
       final Pair<A, B> aux = (Pair<A, B>) o;
       return a.equals(aux.getA()) && b.equals(aux.getB());
     } else {
