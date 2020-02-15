@@ -1,3 +1,5 @@
+package Structures;
+
 /**
  * Clase que representa el objeto unico del Hash Code 2020
  *
@@ -7,7 +9,7 @@
  */
 public class HashCodeObject {
 
-    public HashCodeObject() { 
+    public HashCodeObject() {
 
     }
 }

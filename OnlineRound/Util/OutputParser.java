@@ -1,9 +1,9 @@
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
 
 /**
- * Clase de utilidad que recibe la estructura de output y la escribe en fichero
+ * Clase de utilidad que recibe una solución y escribe un fichero con el formato
+ * adecuado.
  *
  * @author Los Marcos
  * @version 1.0
@@ -22,10 +22,10 @@ public class OutputParser {
         PrintWriter pw = null;
         try {
             pw = new PrintWriter(path);
-        // pw.write("") Primera linea especial
-        for (final Object aux : output) {
-            pw.write(outputParse(aux));
-        }
+            // pw.write("") Primera linea especial
+            for (final Object aux : output) {
+                pw.write(outputParse(aux));
+            }
         } catch (FileNotFoundException e) {
             e.getMessage();
         } finally {
@@ -34,13 +34,12 @@ public class OutputParser {
     }
 
     /**
-     * Generador de String de output
+     * Generador de String de output // Si son objetos propios llamar a toString()
      * 
-     * @param path,   ruta del fichero.
-     * @param output, estructura generada.
-     * @return
+     * @return res,
      */
     private static String outputParse(final Object ele) {
-        return "";
+        String res = "";
+        return res;
     }
 }

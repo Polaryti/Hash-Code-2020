@@ -1,4 +1,4 @@
-package Estructures;
+package Structures;
 
 /**
  * Clase que representa la estructura de datos de pares. Los parametros 'a' y
@@ -9,8 +9,8 @@ package Estructures;
  * @since 11-02-20
  */
 public class Pair<A, B> implements Cloneable {
-  private A a;    // Primer elemento del Pair
-  private B b;    // Segundo elemento del Pair
+  private A a; // Primer elemento del Pair
+  private B b; // Segundo elemento del Pair
   private final boolean isMutable; // Indica si se pueden modificar los parametros en ejecución
 
   /**

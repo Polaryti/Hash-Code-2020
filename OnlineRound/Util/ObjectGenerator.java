@@ -1,6 +1,5 @@
 import java.util.LinkedList;
-
-import Estructures.HashCodeObject;
+import Structures.HashCodeObject;
 
 /**
  * Clase de utilidad que recibe el input tratado y lo transforma en una lista de
