@@ -1,3 +1,4 @@
+import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 
@@ -12,26 +13,34 @@ public class OutputParser {
     /**
      * Crea la lista de listas de parametros.
      * 
-     * @param path, ruta del fichero.
+     * @param path,   ruta del fichero.
      * @param output, estructura generada.
+     * @throws FileNotFoundException, si no enceuntra el archivo o es de solo
+     *                                lectura.
      */
-    public static void genOutput(String path, ArrayList<Object> output) {
-        PrintWriter pw = new PrintWriter(path);
-        //pw.write("") Primera linea especial
-        for (Object aux : output) {
-            pw.write(outputParse(output));
+    public static void genOutput(final String path, final Iterable output) {
+        PrintWriter pw = null;
+        try {
+            pw = new PrintWriter(path);
+        // pw.write("") Primera linea especial
+        for (final Object aux : output) {
+            pw.write(outputParse(aux));
         }
-        pw.close();
+        } catch (FileNotFoundException e) {
+            e.getMessage();
+        } finally {
+            pw.close();
+        }
     }
 
     /**
      * Generador de String de output
      * 
-     * @param path, ruta del fichero.
+     * @param path,   ruta del fichero.
      * @param output, estructura generada.
-     * @return 
+     * @return
      */
-    private static String outputParse(Object ele) {
+    private static String outputParse(final Object ele) {
         return "";
     }
 }

@@ -1,7 +1,10 @@
 import java.util.LinkedList;
 
+import Estructures.HashCodeObject;
+
 /**
- * Clase de utilidad que recibe el input tratado y lo transforma en una lista de HashCodeObject.
+ * Clase de utilidad que recibe el input tratado y lo transforma en una lista de
+ * HashCodeObject.
  *
  * @author Los Marcos
  * @version 1.0
@@ -14,7 +17,7 @@ public class ObjectGenerator {
      * @param rawInput, lista de lista de parametros.
      * @return LinkedList<HashCodeObject>, la lista de HashCodeObject.
      */
-    public static LinkedList<HashCodeObject> getHashCodeObjects(LinkedList<LinkedList<String>> rawInput) {
+    public static LinkedList<HashCodeObject> getHashCodeObjects(final LinkedList<LinkedList<String>> rawInput) {
         LinkedList<HashCodeObject> res = new LinkedList<>();
         for (LinkedList<String> aux : rawInput) {
             res.add(new HashCodeObject()); // A modificar

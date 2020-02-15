@@ -1,29 +1,32 @@
-import java.uti.LinkedList;
+import java.util.LinkedList;
+
+import Estructures.HashCodeObject;
 
 /**
- * Clase principal que ejecutara el solucionador del Hash Code 2020 de forma secuencial o paralela.
+ * Clase principal que ejecutara el solucionador del Hash Code 2020 de forma
+ * secuencial o paralela.
  *
  * @author Los Marcos
  * @version 1.0
  * @since 14-02-20
  */
 public class Main {
-    private final String inputA = "";
-    private final String inputB = "";
-    private final String inputC = "";
-    private final String inputD = "";
-    private final String inputE = "";
-    private final String outputA = "";
-    private final String outputB = "";
-    private final String outputC = "";
-    private final String outputD = "";
-    private final String outputE = "";
+    private final static String inputA = "";
+    private final static String inputB = "";
+    private final static String inputC = "";
+    private final static String inputD = "";
+    private final static String inputE = "";
+    private final static String outputA = "";
+    private final static String outputB = "";
+    private final static String outputC = "";
+    private final static String outputD = "";
+    private final static String outputE = "";
 
     public static void main(String[] args) {
         LinkedList<LinkedList<String>> rawInput = InputParser.getInput(inputA);
-        LinkedList<HashCodeObject> objectInput = ObjectGenerator.getHashCodeObjects(rawInput); // Si la primera linea es epecial, habrá que quitarla
-        Object res = Algorithms.algorithmA(0, 1, objectInput);
+        LinkedList<HashCodeObject> objectInput = ObjectGenerator.getHashCodeObjects(rawInput); // A modificar
+        Iterable res = Algorithms.AlgorithmA(0, 1, objectInput);
         System.out.println(PointsCalculator.calculatePoints(res));
-        OutputParser.getOutput(outputA, res);
+        OutputParser.genOutput(outputA, res);
     }
 }

@@ -1,12 +1,13 @@
+package Estructures;
+
 /**
-* Clase que representa la estructura de datos de pares.
-* Los parametros 'a' y 'b' pueden ser de diferente tipo.
-* El objeto puede ser inmutable o no.
-*
-* @author  Los Marcos
-* @version 1.0
-* @since   11-02-20 
-*/
+ * Clase que representa la estructura de datos de pares. Los parametros 'a' y
+ * 'b' pueden ser de diferente tipo. El objeto puede ser inmutable o no.
+ *
+ * @author Los Marcos
+ * @version 1.0
+ * @since 11-02-20
+ */
 public class Pair<A, B> implements Cloneable {
   private A a;    // Primer elemento del Pair
   private B b;    // Segundo elemento del Pair
@@ -110,7 +111,7 @@ public class Pair<A, B> implements Cloneable {
 
   @Override
   public boolean equals(final Object o) {
-    if (o instanceof Pair<A, B>) {
+    if (o instanceof Pair) {
       final Pair<A, B> aux = (Pair<A, B>) o;
       return a.equals(aux.getA()) && b.equals(aux.getB());
     } else {
