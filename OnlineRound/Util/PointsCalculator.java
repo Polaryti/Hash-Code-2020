@@ -1,3 +1,5 @@
+package Util;
+
 /**
  * Clase que calcula los puntos de una solución.
  *
