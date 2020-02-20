@@ -31,7 +31,7 @@ public class Main {
     static HashMap<Integer, Integer> punt;
     static boolean[] isVisitado;
     static String[] parametros, puntuacionLibros;
-    static LinkedList<Libreria> librerias;
+    public static LinkedList<Libreria> librerias;
 
     public static void main(String[] args) throws FileNotFoundException {
         librerias = new LinkedList<>();
@@ -70,10 +70,14 @@ public class Main {
         PrintWriter pw = new PrintWriter(new File(outputA));
         LinkedList<Libreria> libActivas = new LinkedList<>();
         LinkedList<LibreriaO> output = new LinkedList<>();
-        pw.println()
-        int cont = 1;
-        for (Libreria libreia : librerias) {
-            
+        pw.println(librerias.size());
+        int cont = 0;
+
+        for (Libreria lib : librerias) {
+            int var = cont * lib.lpdia;
+            for () {
+
+            }
         }
 
     }
