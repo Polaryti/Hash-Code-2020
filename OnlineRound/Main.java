@@ -32,20 +32,20 @@ public class Main {
             sc = new Scanner(inputA);
             parametros = sc.nextLine().split(" ");
             puntuacionLibros = sc.nextLine().split(" ");
+            int cont = 0;
             while (sc.hasNextLine()) {
-                String[] aux = sc.nextLine().split(" ");
+                String[] pro = sc.nextLine().split(" ");
                 String[] libros = sc.nextLine().split(" ");
                 int[] libInt = new int[libros.length];
                 for (int i = 0; i < libros.length; i++) {
                     libInt[i] = Integer.parseInt(libros[i]);
                 }
-                Libreria lb = new Libreria(parametros[0], parametros[1], parametros[2], libInt);
+                Libreria lb = new Libreria(cont, pro[0], pro[1], pro[2], libInt);
                 librerias.add(lb);
+                cont++;
             }
         } finally {
             sc.close();
-
-        System.out.println(PointsCalculator.calculatePoints(res));
-        OutputParser.genOutput(outputA, res);
+        }
     }
 }
