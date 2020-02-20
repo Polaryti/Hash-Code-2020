@@ -1,7 +1,7 @@
 package Util;
 
 import java.util.LinkedList;
-import Structures.HashCodeObject;;
+import Structures.*;;
 
 /**
  * Clase que representa los diferentes algoritmos para obtener una solución.
@@ -12,8 +12,6 @@ import Structures.HashCodeObject;;
  */
 public class Algorithms {
 
-    // Metodo de ejemplo
-    public static Iterable AlgorithmA(int a, int b, LinkedList<HashCodeObject> objectInput) {
-        return null;
-    }
+    // Metodo de fuerza-bruta
+    public static LibreriaO fuerzaBruta()
 }

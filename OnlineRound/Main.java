@@ -5,6 +5,7 @@ import Util.*;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 import java.util.*;
 
 /**
@@ -29,10 +30,11 @@ public class Main {
 
     static HashMap<Integer, Integer> punt;
     static boolean[] isVisitado;
+    static String[] parametros, puntuacionLibros;
+    static LinkedList<Libreria> librerias;
 
     public static void main(String[] args) throws FileNotFoundException {
-        String[] parametros, puntuacionLibros;
-        LinkedList<Libreria> librerias = new LinkedList<>();
+        librerias = new LinkedList<>();
 
         Scanner sc = null;
         try {
@@ -41,6 +43,9 @@ public class Main {
             puntuacionLibros = sc.nextLine().split(" ");
             punt = new HashMap<>(puntuacionLibros.length * 2);
             isVisitado = new boolean[puntuacionLibros.length];
+            for (int i = 0; i < puntuacionLibros.length; i++) {
+                punt.put(i, Integer.parseInt(puntuacionLibros[i]));
+            }
             int cont = 0;
             while (sc.hasNextLine()) {
                 String[] pro = sc.nextLine().split(" ");
@@ -59,5 +64,17 @@ public class Main {
         } finally {
             sc.close();
         }
+    }
+
+    public static void fuerzaBruta() throws FileNotFoundException {
+        PrintWriter pw = new PrintWriter(new File(outputA));
+        LinkedList<Libreria> libActivas = new LinkedList<>();
+        LinkedList<LibreriaO> output = new LinkedList<>();
+        pw.println()
+        int cont = 1;
+        for (Libreria libreia : librerias) {
+            
+        }
+
     }
 }
