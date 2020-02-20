@@ -28,10 +28,11 @@ public class Main {
     private final static String outputD = "";
     private final static String outputE = "";
 
-    static HashMap<Integer, Integer> punt;
+    static int[] punt;
     static boolean[] isVisitado;
     static String[] parametros, puntuacionLibros;
     static LinkedList<Libreria> librerias;
+    static int diasRest = 0;
 
     public static void main(String[] args) throws FileNotFoundException {
         librerias = new LinkedList<>();
@@ -40,13 +41,17 @@ public class Main {
         try {
             sc = new Scanner(new File(inputA));
             parametros = sc.nextLine().split(" ");
+            //creamos un array con el numero de libros y sus puntuaciones
+            punt = new int[Integer.parseInt(parametros[0])];
+            diasRest = Integer.parseInt(parametros[2]);
             puntuacionLibros = sc.nextLine().split(" ");
-            punt = new HashMap<>(puntuacionLibros.length * 2);
-            isVisitado = new boolean[puntuacionLibros.length];
+            //isVisitado = new boolean[puntuacionLibros.length];
+            //insercion de las respectivas puntuaciones de los libros
             for (int i = 0; i < puntuacionLibros.length; i++) {
-                punt.put(i, Integer.parseInt(puntuacionLibros[i]));
+                punt[i] = Integer.parseInt(puntuacionLibros[i]);
             }
             int cont = 0;
+            //lectura de las diferentes librerias
             while (sc.hasNextLine()) {
                 String[] pro = sc.nextLine().split(" ");
                 String[] libros = sc.nextLine().split(" ");
@@ -56,25 +61,74 @@ public class Main {
                     Libro book = new Libro(i, Integer.parseInt(libros[i]));
                     librosI.add(book);
                 }
+                //Creacion de la libreria a partir de los parametros leidos;
                 Libreria lb = new Libreria(cont, Integer.parseInt(pro[0]), Integer.parseInt(pro[1]),
                         Integer.parseInt(pro[2]), librosI);
                 librerias.add(lb);
                 cont++;
             }
+            
+            //Termina la lectura del archivo
+            while(diasRest > 0){
+                siguienteMejor();
+            }
+
         } finally {
             sc.close();
         }
     }
 
-    public static void fuerzaBruta() throws FileNotFoundException {
-        PrintWriter pw = new PrintWriter(new File(outputA));
-        LinkedList<Libreria> libActivas = new LinkedList<>();
-        LinkedList<LibreriaO> output = new LinkedList<>();
-        pw.println()
-        int cont = 1;
-        for (Libreria libreia : librerias) {
-            
+    public static void siguienteMejor(){
+        //Calcular puntuacion "más alta"
+        Libreria aux = null;
+        int max = 0;
+        int maxInd = -1;
+        for(int i = 0; i < librerias.size(); i++){
+            aux = librerias.get(i);
+            int act = aux.puntuacion(diasRest);
+            if( act > max){
+                max = act;
+                maxInd = i;
+            }
         }
-
+        if (maxInd != -1){
+            aux = librerias.get(maxInd);
+            diasRest -= aux.dias;
+        }
+        //Añadir el mejor al resultado(Ni idea del formato)
+        
+        //Actualizar puntuacion de los libros escogidos
+        /*if (aux != null){
+            int tam = aux.seleccionados.size();
+            TreeSet<Libro> lista = new TreeSet<Libro>();
+            for(int i = 0; i < tam; i++){
+                Libro aux2 = aux.seleccionados.last();
+                punt[aux2.id] = 0;
+                lista.add(aux2);
+                aux.seleccionados.remove(aux2);
+            }
+            aux.seleccionados = lista;
+        }*/
+        //Actualizar los libros de las librerias que tienen coincidencias
+        if (aux != null){
+            int tam = aux.seleccionados.size();            
+            TreeSet<Libro> lista = new TreeSet<Libro>();
+            for(int i = 0; i < tam; i++){
+                Libro aux2 = aux.seleccionados.last();
+                for(int j = 0; j < librerias.size(); j++){
+                    Libreria actual = librerias.get(j);
+                    if(!actual.equals(aux)){
+                        boolean saca = actual.lib.remove(aux2);
+                        if(saca){actual.lib.add(new Libro(aux2.id,0));}
+                    }
+                }
+                lista.add(aux2);
+                aux.seleccionados.remove(aux2);
+            }
+        }
+        //Elminar libreria de la lista de librerias
+        if(aux != null){librerias.remove(aux);}
+        if(maxInd == -1){diasRest = 0;}
+        
     }
 }

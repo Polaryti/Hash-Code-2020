@@ -15,4 +15,5 @@ public class LibreriaO {
         libEsc = new LinkedList<Libro>();
     }
 
+    
 }
