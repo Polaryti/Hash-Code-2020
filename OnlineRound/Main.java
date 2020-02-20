@@ -1,6 +1,7 @@
 import java.util.LinkedList;
 
 import Structures.HashCodeObject;
+import Util.*;
 
 /**
  * Clase principal que ejecutara el solucionador del Hash Code 2020 de forma
