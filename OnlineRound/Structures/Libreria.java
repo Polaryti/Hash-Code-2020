@@ -1,6 +1,6 @@
 package Structures;
 
-import java.util.List;
+import java.util.TreeSet;
 
 
 public class Libreria {
@@ -8,16 +8,17 @@ public class Libreria {
     public int nLibros;
     public int dias;
     public int lpdia;
-    public Libro[] lib;
+    public TreeSet<Libro> lib;
 
-    public Libreria(int id, int nl, int d, int lpd, Libro[] lib){
+    public Libreria(int id, int nl, int d, int lpd, TreeSet<Libro> lirbos){
         idLib = id;
         nLibros = nl;
         dias = d;
         lpdia = lpd;
-        lib = new Libro[nl];
-        System.arraycopy(lib, 0, this.lib, 0, nl);
+        lib = lirbos;
     }
+
+
 
 
  }

@@ -24,23 +24,29 @@ public class Main {
     private final static String outputD = "";
     private final static String outputE = "";
 
+    static HashMap<Integer, Integer> punt;
+
     public static void main(String[] args) {
         String[] parametros, puntuacionLibros;
         LinkedList<Libreria> librerias = new LinkedList<>();
+
         Scanner sc = null;
         try {
             sc = new Scanner(inputA);
             parametros = sc.nextLine().split(" ");
             puntuacionLibros = sc.nextLine().split(" ");
+            punt = new HashMap<>(puntuacionLibros.length * 2);
             int cont = 0;
             while (sc.hasNextLine()) {
                 String[] pro = sc.nextLine().split(" ");
                 String[] libros = sc.nextLine().split(" ");
-                int[] libInt = new int[libros.length];
+                TreeSet<Libro> librosI = new TreeSet<>();
+
                 for (int i = 0; i < libros.length; i++) {
-                    libInt[i] = Integer.parseInt(libros[i]);
+                    Libro book = new Libro(i, Integer.parseInt(libros[i]));
+                    librosI.add(book);
                 }
-                Libreria lb = new Libreria(cont, Integer.parseInt(pro[0]), Integer.parseInt(pro[1]), Integer.parseInt(pro[2]), libInt);
+                Libreria lb = new Libreria(cont, Integer.parseInt(pro[0]), Integer.parseInt(pro[1]), Integer.parseInt(pro[2]), librosI);
                 librerias.add(lb);
                 cont++;
             }
