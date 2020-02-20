@@ -1,3 +1,5 @@
+package Util;
+
 import java.util.Scanner;
 import java.util.LinkedList;
 

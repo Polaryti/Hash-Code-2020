@@ -1,3 +1,5 @@
+package Util;
+
 import java.util.LinkedList;
 import Structures.HashCodeObject;;
 
