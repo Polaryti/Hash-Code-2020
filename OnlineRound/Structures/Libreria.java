@@ -4,12 +4,14 @@ import java.util.List;
 
 
 public class Libreria {
+    public int idLib;
     public int nLibros;
     public int dias;
     public int lpdia;
     public int[] lib;
 
-    public Libreria(int nl, int d, int lpd, int[] lib){
+    public Libreria(int id, int nl, int d, int lpd, int[] lib){
+        idLib = id;
         nLibros = nl;
         dias = d;
         lpdia = lpd;
