@@ -1,7 +1,8 @@
 import java.util.LinkedList;
 
-import Structures.HashCodeObject;
+import Structures.*;
 import Util.*;
+import java.util.*;
 
 /**
  * Clase principal que ejecutara el solucionador del Hash Code 2020 de forma
@@ -24,9 +25,26 @@ public class Main {
     private final static String outputE = "";
 
     public static void main(String[] args) {
-        LinkedList<LinkedList<String>> rawInput = InputParser.getInput(inputA);
-        LinkedList<HashCodeObject> objectInput = ObjectGenerator.getHashCodeObjects(rawInput); // A modificar
-        Iterable res = Algorithms.AlgorithmA(0, 1, objectInput);
+        String[] parametros, puntuacionLibros;
+        LinkedList<Librerias> librerias = new LinkedList<>();
+        Scanner sc = null;
+        try {
+            sc = new Scanner(inputA);
+            parametros = sc.nextLine().split(" ");
+            puntuacionLibros = sc.nextLine().split(" ");
+            while (sc.hasNextLine()) {
+                String[] aux = sc.nextLine().split(" ");
+                String[] libros = sc.nextLine().split(" ");
+                int[] libInt = new int[libros.length];
+                for (int i = 0; i < libros.length; i++) {
+                    libInt[i] = Integer.parseInt(libros[i]);
+                }
+                Libreria lb = new Libreria(parametros[0], parametros[1], parametros[2], libInt);
+                librerias.add(lb);
+            }
+        } finally {
+            sc.close();
+
         System.out.println(PointsCalculator.calculatePoints(res));
         OutputParser.genOutput(outputA, res);
     }
