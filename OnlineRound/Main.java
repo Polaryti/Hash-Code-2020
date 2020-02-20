@@ -2,6 +2,9 @@ import java.util.LinkedList;
 
 import Structures.*;
 import Util.*;
+
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.*;
 
 /**
@@ -13,29 +16,31 @@ import java.util.*;
  * @since 14-02-20
  */
 public class Main {
-    private final static String inputA = "";
+    private final static String inputA = "C:\\Users\\mario\\Documents\\GitHub\\Hash-Code-2020\\OnlineRound\\Input\\a_example.txt";
     private final static String inputB = "";
     private final static String inputC = "";
     private final static String inputD = "";
     private final static String inputE = "";
-    private final static String outputA = "";
+    private final static String outputA = "Output/A";
     private final static String outputB = "";
     private final static String outputC = "";
     private final static String outputD = "";
     private final static String outputE = "";
 
     static HashMap<Integer, Integer> punt;
+    static boolean[] isVisitado;
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws FileNotFoundException {
         String[] parametros, puntuacionLibros;
         LinkedList<Libreria> librerias = new LinkedList<>();
 
         Scanner sc = null;
         try {
-            sc = new Scanner(inputA);
+            sc = new Scanner(new File(inputA));
             parametros = sc.nextLine().split(" ");
             puntuacionLibros = sc.nextLine().split(" ");
             punt = new HashMap<>(puntuacionLibros.length * 2);
+            isVisitado = new boolean[puntuacionLibros.length];
             int cont = 0;
             while (sc.hasNextLine()) {
                 String[] pro = sc.nextLine().split(" ");
@@ -46,7 +51,8 @@ public class Main {
                     Libro book = new Libro(i, Integer.parseInt(libros[i]));
                     librosI.add(book);
                 }
-                Libreria lb = new Libreria(cont, Integer.parseInt(pro[0]), Integer.parseInt(pro[1]), Integer.parseInt(pro[2]), librosI);
+                Libreria lb = new Libreria(cont, Integer.parseInt(pro[0]), Integer.parseInt(pro[1]),
+                        Integer.parseInt(pro[2]), librosI);
                 librerias.add(lb);
                 cont++;
             }
