@@ -26,7 +26,7 @@ public class Main {
 
     public static void main(String[] args) {
         String[] parametros, puntuacionLibros;
-        LinkedList<Librerias> librerias = new LinkedList<>();
+        LinkedList<Libreria> librerias = new LinkedList<>();
         Scanner sc = null;
         try {
             sc = new Scanner(inputA);
@@ -40,7 +40,7 @@ public class Main {
                 for (int i = 0; i < libros.length; i++) {
                     libInt[i] = Integer.parseInt(libros[i]);
                 }
-                Libreria lb = new Libreria(cont, pro[0], pro[1], pro[2], libInt);
+                Libreria lb = new Libreria(cont, Integer.parseInt(pro[0]), Integer.parseInt(pro[1]), Integer.parseInt(pro[2]), libInt);
                 librerias.add(lb);
                 cont++;
             }
