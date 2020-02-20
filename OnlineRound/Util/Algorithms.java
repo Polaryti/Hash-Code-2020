@@ -13,5 +13,5 @@ import Structures.*;;
 public class Algorithms {
 
     // Metodo de fuerza-bruta
-    public static LibreriaO fuerzaBruta()
+    
 }
