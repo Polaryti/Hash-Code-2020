@@ -99,7 +99,7 @@ public class Main {
                     siendoCertificada = libOO.id;
                 } else if (libO.tiempo <= 0 && !libO.libOrig.isEmpty()) {
                     // Recorro todos los libros de la libreria que quedan y se añade a la lista resultado
-                    for (i = 0; i < libO.nLibrosDia && !libO.libOrig.isEmpty(); i++) {
+                    for (i = 0; i < libO.nLibrosDia && !libO.libOrig.isEmpty();) {
                         Libro l = libO.libOrig.first();
                         libO.libOrig.remove(l);
     
@@ -107,6 +107,7 @@ public class Main {
                             isVisitado[l.id] = true;
                             libO.libEsc.add(l);
                             libO.escaneados += 1;
+                            i++;
                         }
                     }
                 }
@@ -118,19 +119,22 @@ public class Main {
             }
         }
         String res = "";
-        int nLibreriasEscaneadas = output.size();
-        res += nLibreriasEscaneadas + "\n";
+        int count = 0;
+        //int nLibreriasEscaneadas = output.size();
+        //res += nLibreriasEscaneadas + "\n";
         for (LibreriaO libORes : output) {
-            if (libORes.tiempo <= 0) {
+            if (libORes.tiempo <= 0 && libORes.escaneados > 0) {
                 int escaneados = libORes.escaneados;
                 res += libORes.id + " " + escaneados + "\n";
+                count++;
                 for (Libro lRes : libORes.libEsc) {
                     res += lRes.id + " ";
                 }
                 res += "\n";
             }
         }
-
+        //res = "pp" + String.valueOf(count) + "\n" + res;
+        System.out.println(count);
         pw.println(res);
         pw.close();
     }
