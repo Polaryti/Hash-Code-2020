@@ -18,6 +18,8 @@ public class LibraryManager {
 
     private HashMap<Integer, Integer> booksScore;
     private ArrayList<Library> libraries;
+    
+    private boolean[] isReaded;
 
     public LibraryManager(final String path) {
         this.path = path;
@@ -30,7 +32,7 @@ public class LibraryManager {
         final LibraryManager libMangD = new LibraryManager("inputD.in");
         final LibraryManager libMangE = new LibraryManager("inputE.in");
         final LibraryManager libMangF = new LibraryManager("inputF.in");
-        libMangA.startDeliveringSystem();
+        //libMangA.startDeliveringSystem();
         //libMangB.startDeliveringSystem();
         //libMangC.startDeliveringSystem();
         //libMangD.startDeliveringSystem();
@@ -77,6 +79,7 @@ public class LibraryManager {
         sc.close();
         // Obtener Input - Fin
         // Algoritmo - Inicio
+        isReaded = new boolean[numOfBooks];
         int maxPoints = 0;
         while (true) {
             Collections.shuffle(libraries);
@@ -115,9 +118,7 @@ public class LibraryManager {
                     res += library.id + " " + (library.nextBookToScan + 1) + "\n";
                     for (int i = 0; i < library.nextBookToScan + 1; i++) {
                         res += library.books[i] + " ";
-                        if (!rdBook.contains(library.books[i])) {
-                            rdBook.add(library.books[i]);
-                        }
+                        isReaded[library.books[i]] = true;
                     }
                     res += "\n";
                 }
@@ -125,13 +126,15 @@ public class LibraryManager {
             res = cont + "\n" + res;
 
             int auxLocalPoints = 0;
-            for (Integer intg : rdBook) {
-                auxLocalPoints += booksScore.get(intg);
+            for (int i = 0; i < numOfBooks; i++) {
+                if (isReaded[i]) {
+                    auxLocalPoints += booksScore.get(i);
+                }
             }
 
 
             if (auxLocalPoints > maxPoints) {
-                final PrintWriter pw = new PrintWriter(new File("O" + path));
+                final PrintWriter pw = new PrintWriter(new File("F-" + auxLocalPoints + ".out"));
                 System.out.println(auxLocalPoints);
                 maxPoints = auxLocalPoints;
                 pw.print(res);
